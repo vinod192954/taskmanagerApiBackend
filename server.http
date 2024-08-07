@@ -1,0 +1,43 @@
+POST http://localhost:4000/register 
+Content-Type: application/json 
+
+{
+    "username" :"vijay",
+    "password":"Vijay@123",
+    "email" : "vijaykumar@gmail.com",
+    "role" : "member"
+}
+###
+POST http://localhost:4000/login 
+Content-Type: application/json
+
+{
+    "username" :"Vijay",
+    "password":"Vijay@123"
+}
+
+###
+POST http://localhost:4000/projects/1 
+Content-Type: application/json 
+
+{
+    "projectName":"Online Store Application",
+    "projectDescription":"This application is used to help users to buy product eazily and apply filters"
+    
+}
+
+### 
+GET http://localhost:4000/projects 
+
+###
+DELETE http://localhost:4000/projects/2 
+
+### 
+PUT http://localhost:4000/projects/1 
+Content-Type: application/json 
+
+{
+    "projectName":"Study  Application",
+    "projectDescription":"This application is used to help aspirant to prepare for exams eazily"
+    
+}
