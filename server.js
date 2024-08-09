@@ -62,7 +62,11 @@ app.post("/login", async (request, response) => {
   } else {
     const isPasswordMatch = await bcrypt.compare(password, dbUser.password);
     if (isPasswordMatch) {
-      response.status(200).send("Login successfully");
+      const payload = {username:username} 
+      const jwtToken = jwt.sign(payload,"my_secret_pin")
+ 
+      response.send({jwtToken:jwtToken})
+      
     } else {
       response.status(400).send("Invalid Password");
     }
