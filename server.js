@@ -46,7 +46,9 @@ app.post("/register", async (request, response) => {
     `;
     const dbResponse = await db.run(createUserQuery, [username, email, hashedPassword, role]);
     const userId = dbResponse.lastID;
-    response.send({ userId: userId });
+    response.status(200)
+    response.send("User created successfully")
+    
   } else {
     response.status(400).send({ error: "User already exists" });
   }
