@@ -58,13 +58,13 @@ app.post("/login", async (request, response) => {
   const { username, password } = request.body;
   const selectedUserQuery = `SELECT * FROM users WHERE username = ?`;
   const dbUser = await db.get(selectedUserQuery, [username]);
-
+  
   if (dbUser === undefined) {
     response.status(400).send("User not exist");
   } else {
     const isPasswordMatch = await bcrypt.compare(password, dbUser.password);
     if (isPasswordMatch) {
-      const payload = {username:username} 
+      const payload = {username:username,id:dbUser.id} 
       const jwtToken = jwt.sign(payload,"my_secret_pin")
  
       response.send({jwtToken:jwtToken})
