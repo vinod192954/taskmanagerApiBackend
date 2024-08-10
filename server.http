@@ -41,3 +41,6 @@ Content-Type: application/json
     "projectDescription":"This application is used to help aspirant to prepare for exams eazily"
     
 }
+
+### 
+GET http://localhost:4000/users/3 

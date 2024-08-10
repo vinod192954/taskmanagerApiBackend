@@ -75,6 +75,13 @@ app.post("/login", async (request, response) => {
   }
 });
 
+app.get("/users/:userId",async(request,response)=>{
+  const {userId} = request.params 
+  const getUser = `SELECT * FROM users WHERE id = ?`
+  const profile = await db.get(getUser,[userId]) 
+ response.send(profile)
+})
+
 app.post("/projects/:userId", async (request, response) => {
   const { projectName, projectDescription } = request.body;
   const { userId } = request.params;
